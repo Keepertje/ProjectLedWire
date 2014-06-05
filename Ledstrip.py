@@ -19,13 +19,13 @@ class Ledstrip():
 		spidev.close()
 		time.sleep(0.002)
 
-	def Color(self,r, g, b, br):
-		return ((int( r * br) & 0xFF) << 16) | ((int(g* br) & 0xFF) << 8) | (int(b* br) & 0xFF)
-
-	def setpixelcolor(self,n, r, g, b, br):
+	def Color(self,r, g, b):
+		return ((r  & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF)
+		
+	def setpixelcolor(self,n, r, g, b):
 		if(n >= len(self.ledpixels)):
 			return
-		self.ledpixels[n] = Color(r,g,b,br)
+		self.ledpixels[n] = Color(r,g,b)
 
 	def setpixelcolor(self,n, c):
 		if (n >= len(self.ledpixels)):
