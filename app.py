@@ -64,14 +64,21 @@ def send_command(hex_val):
     return jsonify(return_object)   
     #time.sleep(5) #to avoid crashing because of swiping/dragging over the colours
 
-@app.route('/set/colorwipe', methods=['GET', 'POST'])
+@app.route('/colorwipe', methods=['GET', 'POST'])
 def send_colorwipe():
 	return_object = {'output' : None , 'error' : None, 'success' : False}
 	col = led_chain.Color(50,0,0)
 	led_chain.colorwipe(col,0.1)
 	return_object['success'] = True
-    return jsonify(return_object)  
+	return jsonify(return_object)  
 	
+
+@app.route('/rainbow', methods=['GET','POST'])
+	return_object = {'output':None, 'error': None, 'success': False}
+	led_chain.rainbow()
+	return_object['succes']=True
+	return jsonify(return_object)
+
     
 # add some filters to jinja
 app.jinja_env.filters['datetimeformat'] = format_datetime
