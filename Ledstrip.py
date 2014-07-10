@@ -27,7 +27,33 @@ class Ledstrip():
 			self.setpixelcolor(i,c)
 			self.writestrip()
 			time.sleep(delay)
+	
+	def allColor(self,pixels,c,wait):
+        for i in range(len(pixels)):
+                 self.setpixelcolor(pixels,i,c)
+        self.writestrip()
+        time.sleep(wait)
+
 		
+	def rainbow(self):
+		r = 255
+        g = 0
+        b = 0
+        for i in range(255):
+                g = i
+                r = 255-i
+                allColor(self.ledpixels, Color(r,g,b,br),0.02)
+        for i in range(255):
+                b = i
+                g = 255-i
+                allColor(self.ledpixels,Color(r,g,b,br),0.02)
+        for i in range(255):
+                r = i
+                b = 255-i
+                allColor(self.ledpixels,Color(r,g,b,br),0.02)
+
+
+	
 	def setpixelcolor(self,n, r, g, b):
 		if(n >= len(self.ledpixels)):
 			return
