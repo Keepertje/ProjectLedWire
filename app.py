@@ -10,11 +10,12 @@ import json
 
 from flask import Flask, request, session, url_for, redirect, render_template, abort, g, flash, jsonify
 from ledController import ledController
-#from Ledstrip import Ledstrip
+from Ledstrip import Ledstrip
 
 SECRET_KEY = 'nkjfsnkgbkfnge347r28fherg8fskgsd2r3fjkenwkg33f3s'
 LOGGING_PATH = "moodLight.log"
 
+led_chain = None
 ledcontrol = None
 
 # create our little application
@@ -54,11 +55,11 @@ def send_command(hex_val):
     return_object = {'output' : None , 'error' : None, 'success' : False}
     rgb_val = rgb(hex_val)
     print "Given colour_val : %s, converted it to %s" % (hex_val, rgb_val)
-    #col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'],0.5)
-    ledcontrol.changeColor(rgb_val['R'],rgb_val['G'],rgb_val['B'])
-    #for i in range(25):
-    #	led_chain.setpixelcolor(i,col) 
-    #led_chain.writestrip()
+    col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'])
+    #ledcontrol.changeColor( rgb_val['R'] , rgb_val['G'] , rgb_val['B'] )
+    for i in range(25):
+    	led_chain.setpixelcolor(i,col) 
+    led_chain.writestrip()
     return_object['success'] = True
     return jsonify(return_object)   
     time.sleep(5) #to avoid crashing because of swiping/dragging over the colours
@@ -80,7 +81,7 @@ if __name__ == '__main__':
     file_handler.setLevel(logging.DEBUG)
     app.logger.addHandler(file_handler)
 
-    ledcontrol = ledController()
-    #led_chain = Ledstrip()
+    #ledcontrol = ledController()
+    led_chain = Ledstrip()
 
     app.run(host='0.0.0.0', port=8080)

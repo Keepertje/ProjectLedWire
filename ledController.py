@@ -2,18 +2,18 @@ from Ledstrip import Ledstrip
 
 class ledController():
 	
-	ledstrip = None
+	ledstrip = Ledstrip()
 	curR = None
 	curG = None
 	curB = None
 	
 	def __init__(self):
-		self.ledstrip = Ledstrip()
+		ledstrip = Ledstrip()
 		curR = 0
 		curG = 0
 		curB = 0
 
-	def changeColor(r,g,b):
+	def changeColor(self, r,g,b):
 		color = ledstrip.Color(r,g,b)
 		allColor(color,0.05)
 		
@@ -42,7 +42,7 @@ class ledController():
 			
 				
 		
-	def allColor(c,delay):
+	def allColor(self, c,delay):
 		for i in range(25):
 			ledstrip.setpixelcolor(i,c)
 		ledstrip.writestrip()
