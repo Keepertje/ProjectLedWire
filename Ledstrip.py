@@ -21,6 +21,12 @@ class Ledstrip():
 
 	def Color(self,r, g, b):
 		return ((r  & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF)
+	
+	def colorwipe(c,delay):
+		for i in range(25):
+			self.setpixelcolor(i,c)
+			self.writestrip()
+			time.sleep(delay)
 		
 	def setpixelcolor(self,n, r, g, b):
 		if(n >= len(self.ledpixels)):
