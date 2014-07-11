@@ -73,14 +73,19 @@ def send_colorwipe():
 	return jsonify(return_object)  
 	
 
-@app.route('/rainbow', methods=['GET','POST'])
-def send_rainbow():
-	return_object = {'output':None, 'error': None, 'success': False}
+#@app.route('/rainbow', methods=['GET','POST'])
+#def send_rainbow():
+#	return_object = {'output':None, 'error': None, 'success': False}
+#	led_chain.rainbow()
+#	return_object['succes']=True
+#	return jsonify(return_object)
+
+@app.route('/rainbow', methods = ['GET','POST'])
+def send_pulse():
+	return_object = {'output':None, 'error':None, 'success':False} 
 	led_chain.rainbow()
 	return_object['succes']=True
-	return jsonify(return_object)
-
-    
+	return jsonify(return_object)   
 # add some filters to jinja
 app.jinja_env.filters['datetimeformat'] = format_datetime
 

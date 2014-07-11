@@ -30,7 +30,7 @@ class Ledstrip():
 	
 	def allColor(self,pixels,c,wait):
 	        for i in range(len(pixels)):
-        	         self.setpixelcolor(pixels,i,c)
+        	         self.setpixelcolor(i,c)
         	self.writestrip()
         	time.sleep(wait)
 
@@ -42,15 +42,15 @@ class Ledstrip():
         	for i in range(255):
                  g = i
                  r = 255-i
-                 self.allColor(self.ledpixels, Color(r,g,b,br),0.02)
+                 self.allColor(self.ledpixels, self.Color(r,g,b),0.02)
        		for i in range(255):
                  b = i
                  g = 255-i
-                 self.allColor(self.ledpixels,Color(r,g,b,br),0.02)
+                 self.allColor(self.ledpixels,self.Color(r,g,b),0.02)
         	for i in range(255):
                  r = i
                  b = 255-i
-                 self.allColor(self.ledpixels,Color(r,g,b,br),0.02)
+                 self.allColor(self.ledpixels,self.Color(r,g,b),0.02)
 
 
 	
