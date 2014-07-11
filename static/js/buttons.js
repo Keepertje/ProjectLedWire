@@ -6,11 +6,12 @@ function onPulseClick() {
 	jQuery.get("/pulse");
 }(jQuery);
 
-function Pixelwipe() {
+function onPixelwipeClick() {
 	jQuery.get("/pixelwipe");
 }(jQuery);
 
-function Rainbowwipe() {
+function onRainbowClick() {
+	alert('alerted');
 	jQuery.get("/rainbow");
 }(jQuery);
 
