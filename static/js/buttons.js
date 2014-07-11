@@ -1,9 +1,10 @@
 function onColorwipeClick() {
+	alert("derrrp");
 	jQuery.get("/colorwipe");
 }(jQuery);
 
 function onPulseClick() {
-	jQuery.get("/pulse");
+	alert("not yet available");//jQuery.get("/pulse");
 }(jQuery);
 
 function onPixelwipeClick() {
@@ -11,7 +12,7 @@ function onPixelwipeClick() {
 }(jQuery);
 
 function onRainbowClick() {
-	alert('alerted');
+	alert("deeeerrrp");
 	jQuery.get("/rainbow");
 }(jQuery);
 
