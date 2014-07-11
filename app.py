@@ -74,6 +74,7 @@ def send_colorwipe():
 	
 
 @app.route('/rainbow', methods=['GET','POST'])
+def send_rainbow():
 	return_object = {'output':None, 'error': None, 'success': False}
 	led_chain.rainbow()
 	return_object['succes']=True
