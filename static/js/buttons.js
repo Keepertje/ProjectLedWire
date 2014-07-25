@@ -1,6 +1,9 @@
 function onColorwipeClick() {
-	alert("derrrp");
 	jQuery.get("/colorwipe");
+}(jQuery);
+
+function onColorwipeClickpk() {
+	jQuery.get("/colorwipepk");
 }(jQuery);
 
 function onPulseClick() {
@@ -11,7 +14,11 @@ function onPixelwipeClick() {
 	jQuery.get("/pixelwipe");
 }(jQuery);
 
-function onRainbowClick() {
+function onPixelwipeClickpk() {
+	jQuery.get("/pixelwipepk");
+}(jQuery);
+
+function Rainbowwipe() {
 	jQuery.get("/rainbow");
 }(jQuery);
 

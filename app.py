@@ -18,6 +18,12 @@ LOGGING_PATH = "moodLight.log"
 led_chain = None
 ledcontrol = None
 
+col_krat1 = None
+col_krat2 = None
+col_krat3 = None
+col_krat4 = None
+colorList = [[0]*3 for i in range(4)] #overstappen naar lijst met rgb k1,k2,k3,k4
+
 # create our little application
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -50,16 +56,20 @@ def teardown_request(exception):
 def index():
     return render_template('index.html')
     
-@app.route('/set/<hex_val>', methods=['GET', 'POST'])
+@app.route('/set/<krat>/<hex_val>', methods=['GET', 'POST']) #krat is 0,1,2,3,4 range van lijst is 0,1,2,3
 def send_command(hex_val):
     return_object = {'output' : None , 'error' : None, 'success' : False}
     rgb_val = rgb(hex_val)
+	print "Voor krat nummer : %s" %(krat)
     print "Given colour_val : %s, converted it to %s" % (hex_val, rgb_val)
-    col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'])
-    #ledcontrol.changeColor( rgb_val['R'] , rgb_val['G'] , rgb_val['B'] )
-    for i in range(25):
-    	led_chain.setpixelcolor(i,col) 
-    led_chain.writestrip()
+	colorList[krat][0]=rbg_val['R']
+	colorList[krat][1]=rbg_val['G']
+	colorList[krat][2]=rbg_val['B']
+
+    #col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'])
+	#for i in range(25):
+   # 	led_chain.setpixelcolor(i,col) 
+   # led_chain.writestrip()
     return_object['success'] = True
     return jsonify(return_object)   
     #time.sleep(5) #to avoid crashing because of swiping/dragging over the colours
@@ -73,12 +83,15 @@ def send_colorwipe():
 	return jsonify(return_object)  
 	
 
-#@app.route('/rainbow', methods=['GET','POST'])
-#def send_rainbow():
-#	return_object = {'output':None, 'error': None, 'success': False}
-#	led_chain.rainbow()
-#	return_object['succes']=True
-#	return jsonify(return_object)
+@app.route('/nothing', methods=['GET','POST'])
+def send_nothing():
+	return_object = {'output':None, 'error': None, 'success': False}
+	print "That was the NOTHING button.. WHOOAAAA"
+	
+	led_chain.allColor2(colorList)
+	
+	return_object['succes']=True
+	return jsonify(return_object)
 
 @app.route('/rainbow', methods = ['GET','POST'])
 def send_pulse():
@@ -104,5 +117,5 @@ if __name__ == '__main__':
 
     #ledcontrol = ledController()
     led_chain = Ledstrip()
-
+	
     app.run(host='0.0.0.0', port=8080)
