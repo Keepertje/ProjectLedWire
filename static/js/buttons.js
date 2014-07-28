@@ -1,9 +1,9 @@
 function onColorwipeClick() {
-	jQuery.get("/colorwipe");
+	jQuery.get("/colorwipe/false");
 }(jQuery);
 
 function onColorwipeClickpk() {
-	jQuery.get("/colorwipepk");
+	jQuery.get("/colorwipe/true");
 }(jQuery);
 
 function onPulseClick() {
@@ -11,11 +11,11 @@ function onPulseClick() {
 }(jQuery);
 
 function onPixelwipeClick() {
-	jQuery.get("/pixelwipe");
+	jQuery.get("/pixelwipe/false");
 }(jQuery);
 
 function onPixelwipeClickpk() {
-	jQuery.get("/pixelwipepk");
+	jQuery.get("/pixelwipe/true");
 }(jQuery);
 
 function Rainbowwipe() {
@@ -24,6 +24,10 @@ function Rainbowwipe() {
 
 function onNothingClick() {
 	jQuery.get("/nothing");
+}(jQuery);
+
+function onUitClick(){
+	jQuery.get("/off");
 }(jQuery);
   
   
