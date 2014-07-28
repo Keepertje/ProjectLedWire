@@ -67,11 +67,10 @@ def send_command(krat,hex_val):
     return_object['success'] = True
     return jsonify(return_object)   
 
-@app.route('/colorwipe', methods=['GET', 'POST'])
-def send_colorwipe():
+@app.route('/colorwipe/<pk>', methods=['GET', 'POST'])
+def send_colorwipe(pk):
 	return_object = {'output' : None , 'error' : None, 'success' : False}
-	col = led_chain.Color(50,0,0)
-	led_chain.colorwipe(col,0.1)
+	led_chain.colorwipe(pk,colorList)
 	return_object['success'] = True
 	return jsonify(return_object)  
 	
@@ -85,11 +84,39 @@ def send_nothing():
 	return jsonify(return_object)
 
 @app.route('/rainbow', methods = ['GET','POST'])
-def send_pulse():
+def send_rainbow():
 	return_object = {'output':None, 'error':None, 'success':False} 
 	led_chain.rainbow()
 	return_object['succes']=True
 	return jsonify(return_object)   
+	
+@app.route('/pulse', methods=['GET','POST'])
+def send_pulse():
+	return_object = {'output':None, 'error': None, 'success': False}
+	print "That was the pulse"	
+	led_chain.pulse(colorList)	
+	return_object['succes']=True
+	return jsonify(return_object)
+	
+@app.route('/pixelwipe/<pk>', methods=['GET','POST'])
+def send_pixelwipe(pk):
+	return_object = {'output':None, 'error': None, 'success': False}
+	print "pixelwipe"	
+	led_chain.pixelwipe(pk,colorList)	
+	return_object['succes']=True
+	return jsonify(return_object)
+	
+@app.route('/off', methods=['GET','POST'])
+def send_off:
+	return_object = {'output':None, 'error': None, 'success': False}
+	print "off"
+	#alle kleuren uit
+	colorList = [[0]*3 for i in range(4)]
+	led_chain.allColor2(colorList)	
+	return_object['succes']=True
+	return jsonify(return_object)
+		
+		
 # add some filters to jinja
 app.jinja_env.filters['datetimeformat'] = format_datetime
 
