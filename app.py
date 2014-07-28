@@ -107,7 +107,7 @@ def send_pixelwipe(pk):
 	return jsonify(return_object)
 	
 @app.route('/off', methods=['GET','POST'])
-def send_off:
+def send_off():
 	return_object = {'output':None, 'error': None, 'success': False}
 	print "off"
 	#alle kleuren uit
