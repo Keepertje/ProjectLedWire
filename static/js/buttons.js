@@ -18,7 +18,7 @@ function onPixelwipeClickpk() {
 	jQuery.get("/pixelwipe/true");
 }(jQuery);
 
-function Rainbowwipe() {
+function onRainbowClick() {
 	jQuery.get("/rainbow");
 }(jQuery);
 

@@ -44,7 +44,6 @@ class Ledstrip():
                        	curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
                         for n in range(6):
                                 p = (6*i)+n
-                                print "p = %s, n= %s, i = %s" % (p,n,i)
                                 self.setpixelcolor(p,curC)
 		                self.writestrip()
                			time.sleep(0.05)
@@ -56,15 +55,13 @@ class Ledstrip():
 			curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
 			for n in range(6):
 				p = (6*i)+n
-				print "p = %s, n= %s, i = %s" % (p,n,i)
 				self.setpixelcolor(p,curC)
 		self.writestrip()
 		time.sleep(0.05)
 	
-	def pixelwipe(self,pk,colorList):
+	def pixelwipe(self,perkrat,colorList):
 		b = self.stringToBool(perkrat)
 		if(b):
-		   while(True):
 			for n in range(6):
 				for i in range(4):
 					curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
@@ -77,16 +74,14 @@ class Ledstrip():
 					self.writestrip()
 					time.sleep(0.05)
 		else: 
-	         while(True):
 		   for i in range(4):
                        	curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
                         for n in range(6):
                                 p = (6*i)+n
-                                if(p != 0):
-					prev = p-1
-					prevC = self.Color(0,0,0)
-					self.setpixelcolor(prev,prevC)
-                                print "p = %s, n= %s, i = %s" % (p,n,i)
+                              #  if(p != 0):
+				prev = p-1
+				prevC = self.Color(0,0,0)
+				self.setpixelcolor(prev,prevC)
                                 self.setpixelcolor(p,curC)
 		                self.writestrip()
                			time.sleep(0.05)
@@ -105,15 +100,15 @@ class Ledstrip():
         	for i in range(255):
                  g = i
                  r = 255-i
-                 self.allColor(self.ledpixels, self.Color(r,g,b),0.02)
+                 self.allColor(self.ledpixels, self.Color(r,g,b),0.1)
        		for i in range(255):
                  b = i
                  g = 255-i
-                 self.allColor(self.ledpixels,self.Color(r,g,b),0.02)
+                 self.allColor(self.ledpixels,self.Color(r,g,b),0.1)
         	for i in range(255):
                  r = i
                  b = 255-i
-                 self.allColor(self.ledpixels,self.Color(r,g,b),0.02)
+                 self.allColor(self.ledpixels,self.Color(r,g,b),0.1)
 
 
 	
