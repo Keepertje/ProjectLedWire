@@ -9,14 +9,12 @@ import json
 
 
 from flask import Flask, request, session, url_for, redirect, render_template, abort, g, flash, jsonify
-from ledController import ledController
 from Ledstrip import Ledstrip
 
 SECRET_KEY = 'nkjfsnkgbkfnge347r28fherg8fskgsd2r3fjkenwkg33f3s'
 LOGGING_PATH = "moodLight.log"
 
 led_chain = None
-ledcontrol = None
 
 col_krat1 = None
 col_krat2 = None
@@ -66,14 +64,8 @@ def send_command(krat,hex_val):
     colorList[k][0]=rgb_val['R']
     colorList[k][1]=rgb_val['G']
     colorList[k][2]=rgb_val['B']
-
-    #col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'])
-	#for i in range(25):
-   # 	led_chain.setpixelcolor(i,col) 
-   # led_chain.writestrip()
     return_object['success'] = True
     return jsonify(return_object)   
-    #time.sleep(5) #to avoid crashing because of swiping/dragging over the colours
 
 @app.route('/colorwipe', methods=['GET', 'POST'])
 def send_colorwipe():
@@ -87,10 +79,8 @@ def send_colorwipe():
 @app.route('/nothing', methods=['GET','POST'])
 def send_nothing():
 	return_object = {'output':None, 'error': None, 'success': False}
-	print "That was the NOTHING button.. WHOOAAAA"
-	
-	led_chain.allColor2(colorList)
-	
+	print "That was the NOTHING button.. WHOOAAAA"	
+	led_chain.allColor2(colorList)	
 	return_object['succes']=True
 	return jsonify(return_object)
 
