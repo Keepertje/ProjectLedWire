@@ -22,11 +22,23 @@ class Ledstrip():
 	def Color(self,r, g, b):
 		return ((r  & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF)
 	
-	def colorwipe(self,c,delay):
-		for i in range(25):
-			self.setpixelcolor(i,c)
-			self.writestrip()
-			time.sleep(delay)
+	def colorwipe(self,perkrat,colorList):
+		
+		b = stringToBool(perkrat)
+		if(b):
+			for n in range(6):
+				for i in range(4):
+					curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
+					p = (6*i)+n
+		#			print "p = %s, n= %s, i = %s" % (p,n,i)
+					self.setpixelcolor(p,curC)
+					self.writestrip()
+					time.sleep(0.05)
+		elif:
+			for i in range(25):
+				self.setpixelcolor(i,c)
+				self.writestrip()
+				time.sleep(0.05)
 	
 	def allColor2(self,colorList):
 	
@@ -75,3 +87,8 @@ class Ledstrip():
 			return
 		self.ledpixels[n] = c
 
+	def stringToBool(self,s):
+		if (s == "true"):
+			return True
+		elif (s=="false"):
+			return False
