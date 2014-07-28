@@ -27,17 +27,12 @@
 
    <div class="container">
     <div class = "masthead">
-		<img src="images/header2.jpg"/>
+		<img src="static/images/header2.jpg"/>
 	</div>
 	<div class="well">
 		<div class="row">
 			<div class="col">
 				<h3>Krat 1</h3>
-					<input type="checkbox" id="c1">
-					<script>
-						$('#c1').bootstrapSwitch();
-						//onswitch moet er nog bij
-					</script>
 					<div class="form-item"><label for="colorkrat1">Kleur:</label><input type="text" id="colorkrat1" name="colorkrat1" value="#123456" /></div>
 					<div id="pickerkrat1"></div>
 		
@@ -50,7 +45,7 @@
 						function onColorChange(hexvalue) {
 							$("#colorkrat1").val(hexvalue);
 							$('#colorkrat1').css('background-color', hexvalue);
-							jQuery.get("/0/"+hexvalue);
+							jQuery.get("set/0/" + hexvalue.replace('#',''));
 						};
 					});	
 					</script>
@@ -58,11 +53,6 @@
 			</div>
 			<div class="col"> 
 				<h3>Krat 2</h3>
-				<input type="checkbox" id="c2">
-					<script>
-						$('#c2').bootstrapSwitch();
-						//onswitch moet er nog bij
-					</script>
 					<div class="form-item"><label for="colorkrat2">Kleur:</label><input type="text" id="colorkrat2" name="colorkrat2" value="#123456" /></div>
 					<div id="pickerkrat2"></div>
 		
@@ -75,7 +65,7 @@
 						function onColorChange(hexvalue) {
 							$("#colorkrat2").val(hexvalue);
 							$('#colorkrat2').css('background-color', hexvalue);
-							jQuery.get("/1/"+hexvalue);
+							jQuery.get("set/1/"+hexvalue.replace('#',''));
 						};
 					});	
 					</script>
@@ -83,11 +73,6 @@
 			</div>
 			<div class="col">
 			<h3>Krat 3</h3>
-			<input type="checkbox" id="c3">
-					<script>
-						$('#c3').bootstrapSwitch();
-						//onswitch moet er nog bij
-					</script>
 					<div class="form-item"><label for="colorkrat3">Kleur:</label><input type="text" id="colorkrat3" name="colorkrat3" value="#123456" /></div>
 					<div id="pickerkrat3"></div>
 		
@@ -100,18 +85,13 @@
 						function onColorChange(hexvalue) {
 							$("#colorkrat3").val(hexvalue);
 							$('#colorkrat3').css('background-color', hexvalue);
-							jQuery.get("/2/"+hexvalue);
+							jQuery.get("set/2/"+hexvalue.replace('#',''));
 						};
 					});	
 					</script>
 			</div>
 			<div class="col">
 				<h3>Krat 4</h3>
-				<input type="checkbox" id="c4">
-					<script>
-						$('#c4').bootstrapSwitch();
-						//onswitch moet er nog bij
-					</script>
 					<div class="form-item"><label for="colorkrat4">Kleur:</label><input type="text" id="colorkrat4" name="colorkrat4" value="#123456" /></div>
 					<div id="pickerkrat4"></div>
 		
@@ -124,7 +104,7 @@
 						function onColorChange(hexvalue) {
 							$("#colorkrat4").val(hexvalue);
 							$('#colorkrat4').css('background-color', hexvalue);
-							jQuery.get("/3/"+hexvalue);
+							jQuery.get("set/3/"+hexvalue.replace('#',''));
 						};
 					});	
 					</script>
@@ -135,13 +115,13 @@
 	<div class = "well">
 	<h3> Programmering </h3>
 	<button type="button" class="btn btn-default btn-lg" onclick="onColorwipeClick()">Colorwipe</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onColorwipeClickpk()">Colorwipe-per-krat</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onPulseClick()">Pulse</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onPixelwipeClick()">Pixelwipe</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onPixelwipeClickpk()">Pixelwipe-per-krat</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onRainbowClick()">Rainbowwipe</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onNothingClick()">Effen</button>
-	<button type="button" disabled class="btn btn-default btn-lg" onclick="onOffClick()">Uit</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onColorwipeClickpk()">Colorwipe-per-krat</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onPulseClick()">Pulse</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onPixelwipeClick()">Pixelwipe</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onPixelwipeClickpk()">Pixelwipe-per-krat</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onRainbowClick()">Rainbowwipe</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onNothingClick()">Effen</button>
+	<button type="button" class="btn btn-default btn-lg" onclick="onOffClick()">Uit</button>
 	</class>
 		
   </div>

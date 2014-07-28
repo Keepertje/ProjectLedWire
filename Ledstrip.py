@@ -28,11 +28,13 @@ class Ledstrip():
 			self.writestrip()
 			time.sleep(delay)
 	
-	def allColor2(colorList):	
+	def allColor2(self,colorList):
+	
 		for i in range(4):
-			curC = self.Color([i][0],[i][1],[i][2])
+			curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
 			for n in range(6):
-				p = (n*i)-(6-n)
+				p = (6*i)+n
+				print "p = %s, n= %s, i = %s" % (p,n,i)
 				self.setpixelcolor(p,curC)
 		self.writestrip()
 		time.sleep(0.05)

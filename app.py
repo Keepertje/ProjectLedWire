@@ -57,14 +57,15 @@ def index():
     return render_template('index.html')
     
 @app.route('/set/<krat>/<hex_val>', methods=['GET', 'POST']) #krat is 0,1,2,3,4 range van lijst is 0,1,2,3
-def send_command(hex_val):
+def send_command(krat,hex_val):
     return_object = {'output' : None , 'error' : None, 'success' : False}
     rgb_val = rgb(hex_val)
-	print "Voor krat nummer : %s" %(krat)
+    print "Voor krat nummer : %s" %(krat)
     print "Given colour_val : %s, converted it to %s" % (hex_val, rgb_val)
-	colorList[krat][0]=rbg_val['R']
-	colorList[krat][1]=rbg_val['G']
-	colorList[krat][2]=rbg_val['B']
+    k = int(krat)
+    colorList[k][0]=rgb_val['R']
+    colorList[k][1]=rgb_val['G']
+    colorList[k][2]=rgb_val['B']
 
     #col = led_chain.Color(rgb_val['R'],rgb_val['G'],rgb_val['B'])
 	#for i in range(25):
