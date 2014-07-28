@@ -60,7 +60,37 @@ class Ledstrip():
 				self.setpixelcolor(p,curC)
 		self.writestrip()
 		time.sleep(0.05)
-		
+	
+	def pixelwipe(self,pk,colorList):
+		b = self.stringToBool(perkrat)
+		if(b):
+		   while(True):
+			for n in range(6):
+				for i in range(4):
+					curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
+					p = (6*i)+n
+					if(p != 0):
+						prev = p-1
+						prevC = self.Color(0,0,0)
+						self.setpixelcolor(prev,prevC)
+					self.setpixelcolor(p,curC)
+					self.writestrip()
+					time.sleep(0.05)
+		else: 
+	         while(True):
+		   for i in range(4):
+                       	curC = self.Color(colorList[i][0],colorList[i][1],colorList[i][2])
+                        for n in range(6):
+                                p = (6*i)+n
+                                if(p != 0):
+					prev = p-1
+					prevC = self.Color(0,0,0)
+					self.setpixelcolor(prev,prevC)
+                                print "p = %s, n= %s, i = %s" % (p,n,i)
+                                self.setpixelcolor(p,curC)
+		                self.writestrip()
+               			time.sleep(0.05)
+               			
 	def allColor(self,pixels,c,wait):
 	        for i in range(len(pixels)):
         	         self.setpixelcolor(i,c)
